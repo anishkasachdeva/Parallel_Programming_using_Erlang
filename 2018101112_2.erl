@@ -3,17 +3,17 @@
 -import(io,[format/2]). 
 -import(lists,[nth/2]). 
 -import(lists,[append/2]). 
--export([main/1, make_graph/3, spawn_processes/5,bellmanFord/4]). 
+-export([main/1, make_graph/3, spawn_processes/6,bellmanFord/5]). 
 
 
-bellmanFord(Adj_matrix, Vertices, Edges, Source) -> 
+bellmanFord(Output_File ,Adj_matrix, Vertices, Edges, Source) -> 
+    done.
 
-
-
-spawn_processes(_, _, _, _, _,0,_) -> 
+spawn_processes(_, _, _, _,0,_) -> 
     ok;
 spawn_processes(Adj_matrix, Vertices, Edges, Source, Numprocs, Output_File) ->
     Pid = spawn('2018101112_2', bellmanFord, [Output_File,Adj_matrix, Vertices, Edges, Source]), 
+    format("Pid : ~p~n", Pid),
     spawn_processes(Adj_matrix, Vertices, Edges, Source, Numprocs-1, Output_File). 
 
 
@@ -51,5 +51,5 @@ main(Args) ->
     format("Graph : ~p~n", [Graph]),
     file:delete(Output_File),
     Adj_matrix = make_graph(4, Tokens, Graph),
-    format("Adj Matrix : ~p~n", [Adj_matrix]). 
+    format("Adj Matrix : ~p~n", [Adj_matrix]), 
     spawn_processes(Adj_matrix, Vertices, Edges, Source, Numprocs, Output_File).
