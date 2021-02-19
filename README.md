@@ -13,6 +13,9 @@
 
 1. erlc 2018101112_1.erl 
 2. erl -noshell -s 2018101112_1 main <input_file> <output_file> -s init stop
+
+#### Format of input file
+Input contains two space-separated integers P and M denoting the number of processes and the token value respectively.
 #### Implementation Approach
 
 ###### Basic Strategy :
@@ -45,6 +48,10 @@
 1. erlc 2018101112_2.erl 
 2. erl -noshell -s 2018101112_2 main <input_file> <output_file> -s init stop
 
+#### Format of input file
+The first line of input contains number of processes P. The second line of input contains N and M representing the number of vertices and edges in the graph
+respectively. The vertices will be numbered from 1 to N. Each of next M lines contains the triplet X, Y and W that represents the two edge points and the weight
+of an edge. Next line contains S, the source vertex.
 #### Implementation Approach
 
 ###### Basic Strategy :
