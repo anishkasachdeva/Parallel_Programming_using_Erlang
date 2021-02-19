@@ -56,7 +56,13 @@
 3. Source of the graph is extracted.
 4. Then the graph is constructed in the form of a list of lists : Every edge has three values (u, v, w) where the edge is from vertex u to v. And weight of the edge is w. And thus, each list is of size 3 consisting of u,v and w contained in the bigger list.
 5. Now the processes are spawned using the "spawn" command/keyword and each process is sent to execute the bellman ford algorithm.
+6. Now the BellmanFord function is called which sends the updated distance array to all the spawned processes and receives the final updated distance array from the root process.
+7. All the processes after receiving the updated array execute the relaxation of edges assigned to the respectively.
+8. Then all the individual distance arrays are sent to the root process for the final updation after each outer iteration.
+9. After Vertices-1 iterations, we have the distance array containing the final shortest paths from source to all the vertices.
+10. At last, the distance array is written in the Output_file.
 ###### Major Erlang Commands Used :
 1. spawn
-
+2. receive
+3. end
 ---
