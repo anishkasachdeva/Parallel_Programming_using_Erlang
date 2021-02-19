@@ -4,7 +4,7 @@
 ##### Anishka Sachdeva (2018101112)
 ###### 21st February, 2021
 ---
-## Description and Analysis of Solutions
+## Description of Solutions
 ---
 #### Question 1 :
 ##### Write a program to pass an integer token value around all processes in a ring-like fashion, and make sure that it does not have a deadlock.
