@@ -1,5 +1,4 @@
 %Write a program to pass an integer token value around all processes in a ring-like fashion, and make sure that it does not have a deadlock.
-
 -module('2018101112_1'). 
 -import(io,[fwrite/2]). 
 -import(io,[format/2]). 
@@ -7,19 +6,16 @@
 -import(lists,[append/2]). 
 -export([main/1, start/3, convert_type/2, spawn_processes/4, loop/3, initiate_message_passing/2]). 
 
-
 convert_type(N, Msg)->
     Numprocs = list_to_integer(N),
     Token = list_to_integer(Msg),
     [Numprocs, Token].
-
 
 spawn_processes(Pids_List, 0, _, _) -> 
     Pids_List;
 spawn_processes(Pids_List, Numprocs, Output_File, Total_Processes) ->
     Pid = spawn('2018101112_1', loop, [Output_File,Numprocs,Total_Processes]), 
     spawn_processes([Pid|Pids_List], Numprocs-1, Output_File, Total_Processes). 
-
 
 start(Numprocs, Token, Output_File) -> 
     Pids_List = [],
@@ -29,11 +25,9 @@ start(Numprocs, Token, Output_File) ->
     % io:format("~p~n", [LinkedPids]),
     initiate_message_passing(Token, LinkedPids). 
 
-
 initiate_message_passing(Token, [Next_Process_Id|Pids]) ->
     % io:format("~p~n", [Next_Process_Id]),
     Next_Process_Id ! {Token, Pids}. 
-
 
 loop(Output_File, Numprocs, Total_Processes) -> 
     receive
@@ -46,7 +40,6 @@ loop(Output_File, Numprocs, Total_Processes) ->
             Next_Process_Id ! {Token, Pids},
             loop(Output_File, Numprocs, Total_Processes)
     end.
-
 
 main(Args) -> 
     Input_File = nth(1, Args),
