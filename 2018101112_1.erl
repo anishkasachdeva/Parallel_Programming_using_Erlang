@@ -36,7 +36,7 @@ loop(Output_File, Numprocs, Total_Processes) ->
             % format("Total Processes : ~p~n", [Total_Processes]),
             Receiver = Numprocs rem Total_Processes,
             Sender = Numprocs - 1,
-            file:write_file(Output_File,io_lib:fwrite("Process ~p received token ~p from process ~p ~n",[Receiver, Token, Sender]),[append]),
+            file:write_file(Output_File,io_lib:fwrite("Process ~p received token ~p from process ~p. ~n",[Receiver, Token, Sender]),[append]),
             Next_Process_Id ! {Token, Pids},
             loop(Output_File, Numprocs, Total_Processes)
     end.

@@ -56,7 +56,7 @@ of an edge. Next line contains S, the source vertex.
 
 ###### Basic Strategy :
 1. Algorithm used : Bellman Ford Algorithm for Shortest distance to all vertices from source.
-2. The basic strategy involves dividing the edges amongst all the processes in such a manner that each process relaxes the edges independently in the outer iteration (Vertices -1 times) and after each iteration, all the respective distance arrays of each process are merged by broadcasting the distance arrays.
+2. The basic strategy involves dividing the edges amongst all the processes in such a manner that each process relaxes the edges independently in the outer iteration (Vertices -1 times) and after each iteration, all the respective distance arrays of each process are merged by sending the distance arrays to the main process.
 ###### Implementation Strategy :
 1. First the input file is read and broken into tokens.
 2. The number of processes, vertices and edges are extracted.
