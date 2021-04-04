@@ -48,7 +48,7 @@ main(Args) ->
     Text = file:read(File, 1024 * 1024),
     % format("Text : ~p~n", [Text]),
     E = element(2, Text),
-    Tokens = string:tokens(E, " "),
+    Tokens = string:tokens(E, "\n "),
     % format("Tokens : ~p~n", [Tokens]),
     N = nth(1, Tokens),
     Msg = nth(2, Tokens),
